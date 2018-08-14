@@ -1,5 +1,5 @@
 // ====== VARIABLES ====== //
-
+// List of the World's largest 300 cities
 var secretWords = [
     "Shanghai",
     "Beijing",
@@ -309,6 +309,7 @@ var moves2go = 13;
 var word2guess = randomWord(secretWords);
 var secretWord = guessDisplay(word2guess);
 var message = "Press any key to get started!";
+var gameWon = false;
 
 // ====== OUTPUT VARIABLES ====== //
 var winsOutput = document.getElementById("wins");
@@ -326,6 +327,7 @@ function reInit() {
     moves2go = 13;
     word2guess = randomWord(secretWords);
     secretWord = guessDisplay(word2guess);
+    gameOver = false;
 }
 
 // Randomly select word from an array
@@ -334,14 +336,12 @@ function randomWord(dictionary) {
 }
 
 // Filters out non-alphabetic keystrokes, (alt, shift, meta, space, etc.)
-function isValid(event) {
-    if (event.getModifierState("Alt") ||
-        event.getModifierState("Meta") ||
-        event.getModifierState("Shift") ||
-        event.getModifierState("Super") ||
-        event.getModifierState("Win") /* hack for IE */) {
-    return false;
+function isValid(userInput) {
+    var asciiVal = userInput.charCodeAt(0);
+    if (asciiVal >= 97 && asciiVal <= 122 ) {
+        return true;
     }
+    return false;
 }
 
 // Turn randomly selected word in it's blankspace counter-part
@@ -359,7 +359,7 @@ function guessDisplay(secretWord) {
 
 // See if userInput has already been guessed
 function alreadyGuessed(userInput, guessedLetters) {
-    if (guessedLetters.includes(userInput)) {
+    if (guessedLetters.includes(userInput.toUpperCase())) {
         return true;
     } else {
         return false;
@@ -387,10 +387,10 @@ function check(userInput, word2guess, guessedLetters, secretWord) {
     // Checks to see if the typed key is in the word and not already guessed
     if (word2guess.toLowerCase().includes(userInput) && !alreadyGuessed(userInput, guessedLetters)) {
         secretWord = updateOutput(userInput, word2guess, secretWord);
-        guessedLetters.push(userInput);
+        guessedLetters.push(userInput.toUpperCase());
     } else if (alreadyGuessed(userInput, guessedLetters)) {
     } else {
-        guessedLetters.push(userInput);
+        guessedLetters.push(userInput.toUpperCase());
         moves2go --;
     }
     return secretWord
@@ -405,32 +405,41 @@ messageOutput.innerHTML = message;
 document.onkeyup = function(event) {
 
     userInput = event.key;
-    secretWord = check(userInput, word2guess, guessedLetters, secretWord);
+    console.log(userInput.charCodeAt(0));
 
-    if (secretWord === word2guess) {
+    if (isValid(userInput) && secretWord !== word2guess && moves2go !== 0) {
+        secretWord = check(userInput, word2guess, guessedLetters, secretWord);
+    }
+
+    if (secretWord === word2guess && gameWon === false) {
         wins++;
-        messageOutput.innerHTML = "You won! The city was " + word2guess;
+        gameOver = true;
+        messageOutput.innerHTML = "You won! The city was " + word2guess +".<br>Press ENTER to start a new game.";
     }
 
     if (moves2go === 0) {
+        wins = 0;
+        gameOver = true;
         secretWord = word2guess;
-        messageOutput.innerHTML = "You lost!";
+        messageOutput.innerHTML = "You lost!<br>Press ENTER to start a new game.";
     }
 
     winsOutput.innerHTML = wins;
     secretOutput.innerHTML = secretWord;
     movesOutput.innerHTML = moves2go;
-    lettersOutput.innerHTML = guessedLetters;
+    lettersOutput.innerHTML = guessedLetters.join(", ");
 
     // console.log(userInput);
     // console.log(secretWord);
     // console.log(guessedLetters);
     // console.log(moves2go);
 
-    
+}
 
-
-
+document.onkeydown = function(event) {
+    if (event.key=== "Enter" && gameOver === true && secretWord === word2guess) {
+        reInit();
+    }
 }
 
 

@@ -15,6 +15,10 @@ h1 {
     letter-spacing: 0.5rem;
 }
 
+h3 {
+    font-size: 1.5rem;
+}
+
 #secret-word {
     color: #D6BE3F;
 }
@@ -39,9 +43,16 @@ h1 {
     outline: 8px solid #CFCFCF;
 }
 
+#message-output {
+    font-size: 1.75rem;
+}
 
 #secret-word {
     letter-spacing: 30px;
+}
+
+#letters-guessed {
+    font-size: 1.876rem;
 }
 
 
