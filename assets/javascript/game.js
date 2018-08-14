@@ -10,14 +10,28 @@ var secretWords = [
     "ramen", 
     "pho dac biet"
 ];
+var wins = 0;
 var guessedLetters = [];
 var moves2go = 13;
 var word2guess = randomWord(secretWords);
-var guessOutput = guessDisplay(word2guess);
+var secretWord = guessDisplay(word2guess);
+
+// ====== OUTPUT VARIABLES ====== //
+var winsOutput = document.getElementById("wins");
+var secretOutput = document.getElementById("secret-word");
+var movesOutput = document.getElementById("turns-left");
+var lettersOutput = document.getElementById("letters-guessed");
 
 
 
 // ====== FUNCTIONS ====== //
+function reInit() {
+    guessedLetters = [];
+    moves2go = 13;
+    word2guess = randomWord(secretWords);
+    secretWord = guessDisplay(word2guess);
+}
+
 function randomWord(dictionary) {
     return dictionary[Math.floor(Math.random() * dictionary.length)];
 }
@@ -42,48 +56,69 @@ function alreadyGuessed(userInput, guessedLetters) {
     }
 }
 
-function updateOutput (userInput, word2guess, guessOutput) {
+function updateOutput (userInput, word2guess, secretWord) {
     for (var i=0; i<word2guess.length; i++) {
         if (userInput === word2guess[i]) {
-            guessOutput = reWriteOutput(userInput, guessOutput, i);
+            secretWord = reWriteOutput(userInput, secretWord, i);
         }
     }
-    return guessOutput;
+    return secretWord;
 }
 
-function reWriteOutput(userInput, guessOutput, i) {
-    retval = guessOutput.substr(0, i) + userInput + guessOutput.substr(i+1, guessOutput.length);
+function reWriteOutput(userInput, secretWord, i) {
+    retval = secretWord.substr(0, i) + userInput + secretWord.substr(i+1, secretWord.length);
     return retval;
 }
 
-function check(userInput, word2guess, guessedLetters, guessOutput) {
+function check(userInput, word2guess, guessedLetters, secretWord) {
     // checks to see if the typed key is in the word and not already guessed
     if (word2guess.includes(userInput) && !alreadyGuessed(userInput, guessedLetters)) {
         console.log("true");
-        guessOutput = updateOutput(userInput, word2guess, guessOutput);
+        secretWord = updateOutput(userInput, word2guess, secretWord);
         guessedLetters.push(userInput);
     } else if (alreadyGuessed(userInput, guessedLetters)) {
     } else {
         guessedLetters.push(userInput);
         moves2go --;
     }
-    return guessOutput
+    return secretWord
 }
 
+function onlyValid(x) {
+    var val = x.charCodeAt(0);
+    console.log(val);
+    if (val < 123 && val > 64) {
+        return x;
+    }
+}
 
-console.log(word2guess);
-
-console.log(guessOutput.length);
+winsOutput.innerHTML = wins;
+secretOutput.innerHTML = secretWord;
+movesOutput.innerHTML = moves2go;
+lettersOutput.innerHTML = guessedLetters;
 
 document.onkeyup = function(event) {
 
     userInput = event.key;
-    guessOutput = check(userInput, word2guess, guessedLetters, guessOutput);
+    secretWord = check(userInput, word2guess, guessedLetters, secretWord);
 
-    console.log(userInput);
-    console.log(guessOutput);
-    console.log(guessedLetters);
-    console.log(moves2go);
+    if (secretWord === word2guess) {
+        wins++;
+        reInit();
+    }
+
+    winsOutput.innerHTML = wins;
+    secretOutput.innerHTML = secretWord;
+    movesOutput.innerHTML = moves2go;
+    lettersOutput.innerHTML = guessedLetters;
+
+    // console.log(userInput);
+    // console.log(secretWord);
+    // console.log(guessedLetters);
+    // console.log(moves2go);
+
+    
+
 
 
 }
@@ -109,8 +144,8 @@ document.onkeyup = function(event) {
 //             for (var i=0; i<word2guess.length; i++) {
 //                 // if userInput === word2guess[i]
 //                 if (userInput === word2guess[i]) {
-//                     // guessOutput[i] == userInput
-//                     guessOutput[i] = userInput;
+//                     // secretWord[i] == userInput
+//                     secretWord[i] = userInput;
 //                 }
 //             }
 //         } else {
