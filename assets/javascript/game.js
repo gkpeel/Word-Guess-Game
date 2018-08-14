@@ -303,13 +303,27 @@ var secretWords = [
     "Beirut",
 ];
 
+var backgrounds = [
+    "shanghai",
+    "new-york-city",
+    "new-york-city-2",
+    "paris",
+    "london",
+    "sao-paulo",
+    "hong-kong",
+    "moscow",
+    "los-angeles"
+]
+
 var wins = 0;
 var guessedLetters = [];
 var moves2go = 13;
-var word2guess = randomWord(secretWords);
+var word2guess = random(secretWords);
 var secretWord = guessDisplay(word2guess);
 var message = "Press any key to get started!";
 var gameWon = false;
+var background = '<img id="background" src="assets/images/'+random(backgrounds)+'.jpg" />';
+
 
 // ====== OUTPUT VARIABLES ====== //
 var winsOutput = document.getElementById("wins");
@@ -317,7 +331,7 @@ var secretOutput = document.getElementById("secret-word");
 var movesOutput = document.getElementById("turns-left");
 var lettersOutput = document.getElementById("letters-guessed");
 var messageOutput = document.getElementById("message-output");
-
+var backgroundOutput = document.getElementById("background");
 
 // ====== FUNCTIONS ====== //
 
@@ -325,14 +339,15 @@ var messageOutput = document.getElementById("message-output");
 function reInit() {
     guessedLetters = [];
     moves2go = 13;
-    word2guess = randomWord(secretWords);
+    word2guess = random(secretWords);
     secretWord = guessDisplay(word2guess);
     gameOver = false;
+    background = '<img id="background" src="assets/images/'+random(backgrounds)+'.jpg" />';
 }
 
 // Randomly select word from an array
-function randomWord(dictionary) {
-    return dictionary[Math.floor(Math.random() * dictionary.length)];
+function random(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Filters out non-alphabetic keystrokes, (alt, shift, meta, space, etc.)
@@ -428,6 +443,7 @@ document.onkeyup = function(event) {
     secretOutput.innerHTML = secretWord;
     movesOutput.innerHTML = moves2go;
     lettersOutput.innerHTML = guessedLetters.join(", ");
+    backgroundOutput.innerHTML = background;
 
     // console.log(userInput);
     // console.log(secretWord);
