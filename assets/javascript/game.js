@@ -1,30 +1,326 @@
 // ====== VARIABLES ====== //
 
 var secretWords = [
-    "jambalaya", 
-    "lasagna", 
-    "cucumber", 
-    "artichoke", 
-    "pulled pork", 
-    "osso bucco", 
-    "ramen", 
-    "pho dac biet"
+    "Shanghai",
+    "Beijing",
+    "Karachi",
+    "Istanbul",
+    "Dhaka",
+    "Tokyo",
+    "Moscow",
+    "Manila",
+    "Tianjin",
+    "Mumbai",
+    "Sao Paulo",
+    "Shenzhen",
+    "Guangzhou",
+    "Delhi",
+    "Wuhan",
+    "Lahore",
+    "Seoul",
+    "Chengdu",
+    "Kinshasa",
+    "Lima",
+    "Jakarta",
+    "Cairo",
+    "Mexico City",
+    "Tehran",
+    "Baghdad",
+    "Xian",
+    "London",
+    "New York City",
+    "Nanjing",
+    "Bangalore",
+    "Ho Chi Minh City",
+    "Bangkok",
+    "Chongquin",
+    "Bogota",
+    "Lagos",
+    "Riyadh",
+    "Hong Kong",
+    "Chennai",
+    "Hangzhou",
+    "Hyderabad",
+    "Rio De Janeiro",
+    "Zhengzhou",
+    "Shenyang",
+    "Qingdao",
+    "Santiago",
+    "Dalian",
+    "Singapore",
+    "Ahmadabad",
+    "Suzhou",
+    "St Petersburg",
+    "Harbin",
+    "Ankara",
+    "Khartoum",
+    "Yangon",
+    "Casablanca",
+    "Sydney",
+    "Jinan",
+    "Melbourne",
+    "Changsha",
+    "Kolkata",
+    "Fuzhou",
+    "Surat",
+    "Abidjan",
+    "Dar Es Salaam",
+    "Shiziahuang",
+    "Jeddah",
+    "Faisalabad",
+    "Nanning",
+    "Alexandria",
+    "Amman",
+    "Los Angeles",
+    "Kunming",
+    "Changchun",
+    "Yokohama",
+    "Kabul",
+    "Berlin",
+    "Giza",
+    "Urumqi",
+    "Wuxi",
+    "Busan",
+    "Guayaquil",
+    "Hanoi",
+    "Hyderabad",
+    "Addis Ababa",
+    "Algiers",
+    "Kano",
+    "Mashhad",
+    "Hefei",
+    "Changzhou",
+    "Taiyuan",
+    "Rawalpindi",
+    "Tangshan",
+    "Madrid",
+    "Nairobi",
+    "Zibo",
+    "Pune",
+    "Ibadan",
+    "Jaipur",
+    "Guiyang",
+    "Incheon",
+    "Brasilia",
+    "Tshwane (Pretoria)",
+    "Kanpur",
+    "Salvador",
+    "Buenos Aires",
+    "Kiev",
+    "Rome",
+    "Surabaya",
+    "Izmir",
+    "Lucknow",
+    "Basrah",
+    "Toronto",
+    "Gujranwala",
+    "Chicago",
+    "Taipei",
+    "Quito",
+    "Osaka",
+    "Xuzhou",
+    "Fortaleza",
+    "Chittagong",
+    "Pyongyang",
+    "Bandung",
+    "Kaohsiung",
+    "Yaounde",
+    "Daegu",
+    "Taichung",
+    "Belo Horizonte",
+    "Puebla",
+    "Douala",
+    "Medellin",
+    "Nagpur",
+    "Cali",
+    "Omdurman",
+    "Nanchang",
+    "Brisbane",
+    "Bursa",
+    "Tashkent",
+    "Houston",
+    "Nagoya",
+    "Mogadishu",
+    "Isfahen",
+    "Paris",
+    "Accra",
+    "Managua",
+    "Kowloon",
+    "Lanzhou",
+    "Baku",
+    "Guatamala City",
+    "Luanda",
+    "Bucharest",
+    "Havana",
+    "Haiphong",
+    "Manaus",
+    "Baotou",
+    "Multan",
+    "Medan",
+    "Maracaibo",
+    "Barquisimeto",
+    "Perth",
+    "Jilin",
+    "Sapporo",
+    "Caracas",
+    "Minsk",
+    "Maiduguri",
+    "Curitiba",
+    "Vienna",
+    "Port Harcourt",
+    "Luoyang",
+    "Aleppo(Halab)",
+    "Hamburg",
+    "Datong",
+    "Tabriz",
+    "Kuala Lumpur",
+    "Budapest",
+    "Warsaw",
+    "Bhopal",
+    "Lusaka",
+    "Adana",
+    "Pimpri Chinchwad",
+    "Damascus",
+    "Palembang",
+    "Sanaa",
+    "Montreal",
+    "Almaty",
+    "Brazzaville",
+    "Tijuana",
+    "Ecatepec",
+    "Patna",
+    "Mecca",
+    "Vadodara",
+    "Conakry",
+    "Santa Cruz",
+    "Recife",
+    "Harare",
+    "Ludhiana",
+    "Irbil",
+    "Barcelona",
+    "Makassar",
+    "Cordoba",
+    "Agra",
+    "Leon",
+    "Philadelphia",
+    "Novosibirsk",
+    "Phoenix",
+    "Semarang",
+    "Fukuoka",
+    "Valencia",
+    "Kobe",
+    "Anshan",
+    "Porto Alegre",
+    "Daejon",
+    "Phnom Penh",
+    "Lubumbashi",
+    "Benin",
+    "Guadalajara",
+    "Gwangju",
+    "Nashik",
+    "Qiqihar",
+    "Kyoto",
+    "Shiraz",
+    "Munich",
+    "Goiania",
+    "Belem",
+    "San Antonio",
+    "Kawasaki",
+    "Kharkiv",
+    "Ekaterinburg",
+    "Foshan",
+    "San Diego",
+    "Rajkot",
+    "Milan",
+    "Adelaide",
+    "Guarulhos",
+    "Ciudad Juarez",
+    "Montevideo",
+    "Meerut",
+    "Dallas",
+    "Kaduna",
+    "Copenhagen",
+    "Prague",
+    "Soweto",
+    "Sofia",
+    "Maputo",
+    "Nizhny Novgorod",
+    "Kazan",
+    "Varanasi",
+    "Hiroshima",
+    "Indore",
+    "Rosario",
+    "Samara",
+    "Belgrade",
+    "Campinas",
+    "Ulsan",
+    "Zapopan",
+    "Chelyabinsk",
+    "Omsk",
+    "Barranquilla",
+    "Dakar",
+    "Jodphur",
+    "Amritsar",
+    "Monterrey",
+    "Tripoli",
+    "Tbilisi",
+    "Rostov On Don",
+    "Ufa",
+    "Allahabad",
+    "Nezahualcoyotl",
+    "Birmingham",
+    "Shubra El Kheima",
+    "Tunis",
+    "Yerevan",
+    "Ranchi",
+    "Haora",
+    "Sendai",
+    "Tegucigalpa",
+    "Freetown",
+    "Perm",
+    "Volgograd",
+    "Odessa",
+    "Mexicali",
+    "Seongnam",
+    "Port-Au-Prince",
+    "Peshawar",
+    "Dnipropetrovsk",
+    "Napoli",
+    "Santo Domingo",
+    "Kitakyushu",
+    "Johannesburg",
+    "Handan",
+    "Stockholm",
+    "Donetsk",
+    "La Paz",
+    "Medina",
+    "Mosul",
+    "Khulna",
+    "Benghazi",
+    "Durban",
+    "Rabat",
+    "Capetown",
+    "Beirut",
 ];
+
 var wins = 0;
 var guessedLetters = [];
 var moves2go = 13;
 var word2guess = randomWord(secretWords);
 var secretWord = guessDisplay(word2guess);
+var message = "Press any key to get started!";
 
 // ====== OUTPUT VARIABLES ====== //
 var winsOutput = document.getElementById("wins");
 var secretOutput = document.getElementById("secret-word");
 var movesOutput = document.getElementById("turns-left");
 var lettersOutput = document.getElementById("letters-guessed");
-
+var messageOutput = document.getElementById("message-output");
 
 
 // ====== FUNCTIONS ====== //
+
+// Reset and refresh variables
 function reInit() {
     guessedLetters = [];
     moves2go = 13;
@@ -32,10 +328,23 @@ function reInit() {
     secretWord = guessDisplay(word2guess);
 }
 
+// Randomly select word from an array
 function randomWord(dictionary) {
     return dictionary[Math.floor(Math.random() * dictionary.length)];
 }
 
+// Filters out non-alphabetic keystrokes, (alt, shift, meta, space, etc.)
+function isValid(event) {
+    if (event.getModifierState("Alt") ||
+        event.getModifierState("Meta") ||
+        event.getModifierState("Shift") ||
+        event.getModifierState("Super") ||
+        event.getModifierState("Win") /* hack for IE */) {
+    return false;
+    }
+}
+
+// Turn randomly selected word in it's blankspace counter-part
 function guessDisplay(secretWord) {
     var blankWord = "";
     for (var i=0; i<secretWord.length; i++) {
@@ -48,6 +357,7 @@ function guessDisplay(secretWord) {
     return blankWord;
 }
 
+// See if userInput has already been guessed
 function alreadyGuessed(userInput, guessedLetters) {
     if (guessedLetters.includes(userInput)) {
         return true;
@@ -56,6 +366,7 @@ function alreadyGuessed(userInput, guessedLetters) {
     }
 }
 
+// Finds index of userInput in word2guess, reWrites secretWord with those letters
 function updateOutput (userInput, word2guess, secretWord) {
     for (var i=0; i<word2guess.length; i++) {
         if (userInput === word2guess[i]) {
@@ -65,15 +376,16 @@ function updateOutput (userInput, word2guess, secretWord) {
     return secretWord;
 }
 
+// Inserts correctly guessed letter into the secretWord display
 function reWriteOutput(userInput, secretWord, i) {
     retval = secretWord.substr(0, i) + userInput + secretWord.substr(i+1, secretWord.length);
     return retval;
 }
 
+// Checks userInputs against the word
 function check(userInput, word2guess, guessedLetters, secretWord) {
-    // checks to see if the typed key is in the word and not already guessed
-    if (word2guess.includes(userInput) && !alreadyGuessed(userInput, guessedLetters)) {
-        console.log("true");
+    // Checks to see if the typed key is in the word and not already guessed
+    if (word2guess.toLowerCase().includes(userInput) && !alreadyGuessed(userInput, guessedLetters)) {
         secretWord = updateOutput(userInput, word2guess, secretWord);
         guessedLetters.push(userInput);
     } else if (alreadyGuessed(userInput, guessedLetters)) {
@@ -84,18 +396,11 @@ function check(userInput, word2guess, guessedLetters, secretWord) {
     return secretWord
 }
 
-function onlyValid(x) {
-    var val = x.charCodeAt(0);
-    console.log(val);
-    if (val < 123 && val > 64) {
-        return x;
-    }
-}
-
 winsOutput.innerHTML = wins;
 secretOutput.innerHTML = secretWord;
 movesOutput.innerHTML = moves2go;
 lettersOutput.innerHTML = guessedLetters;
+messageOutput.innerHTML = message;
 
 document.onkeyup = function(event) {
 
@@ -104,7 +409,12 @@ document.onkeyup = function(event) {
 
     if (secretWord === word2guess) {
         wins++;
-        reInit();
+        messageOutput.innerHTML = "You won! The city was " + word2guess;
+    }
+
+    if (moves2go === 0) {
+        secretWord = word2guess;
+        messageOutput.innerHTML = "You lost!";
     }
 
     winsOutput.innerHTML = wins;

@@ -1,3 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic|Sawarabi+Mincho');
+
+body {
+    font-size: 16px;
+    font-family: 'Sawarabi Gothic', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Sawarabi Gothic', sans-serif;
+}
+
+h1 {
+    font-family: 'Sawarabi Mincho', sans-serif;
+    font-size: 2.5em;
+    letter-spacing: 0.5rem;
+}
+
+.background {
+    background: url('../images/new-york-city.jpg') no-repeat center;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    left:0;
+    color: #ffffff;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overlay {
+    background-color: rgba(33,33,33,0.8);
+    outline: 3px solid #fafafa;
+}
+
+
 #secret-word {
     letter-spacing: 30px;
+}
+
+
+@media screen and (min-width: 991px) {
+    h1 {
+        font-size: 4em;
+        letter-spacing: 1rem;
+    }
 }

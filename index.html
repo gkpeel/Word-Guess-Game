@@ -12,19 +12,28 @@
     <title>word guess game | a project by geoff peel.</title>
   </head>
   <body>
-      <div class="container">
-          <div class="row">
-              <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-sm-auto mt-5 text-center">
-                  <h1>Word Guess Game</h1>
-                  <h2>Press any key to get started!</h2>
-                  <h3>Wins: <span id="wins">0</span></h3>
-                  <h2 id="secret-word"></h2>
-                  <h3>Number of guesses remaining: <span id="turns-left"></span></h3>
-                  <h3>Letters already guessed:</h3>
-                  <div id="letters-guessed"></div>
-              </div>
-          </div>
-      </div>
+    <div class="background">
+        <div class="container h-100 d-flex">
+            <div class="center">
+                <div class="overlay">
+                    <div class="row">
+                        <div class="col-12 col-sm-10 col-md-10 mx-sm-auto mt-5 text-center">
+                            <h1>Cities of the World</h1>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-sm-auto mt-3 mb-5 text-center">
+                            <h2 class="pb-3"><span id="message-output"></span></h2>
+                            <h3 class="pb-3">Wins: <span id="wins">0</span></h3>
+                            <h2 id="secret-word"></h2>
+                            <h3 class="pt-5">Number of guesses remaining: <span id="turns-left"></span></h3>
+                            <h3>Letters already guessed:</h3>
+                            <div id="letters-guessed"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
