@@ -369,16 +369,16 @@ function alreadyGuessed(userInput, guessedLetters) {
 // Finds index of userInput in word2guess, reWrites secretWord with those letters
 function updateOutput (userInput, word2guess, secretWord) {
     for (var i=0; i<word2guess.length; i++) {
-        if (userInput === word2guess[i]) {
-            secretWord = reWriteOutput(userInput, secretWord, i);
+        if (userInput.toLowerCase() === word2guess[i].toLowerCase()) {
+            secretWord = reWriteOutput(word2guess, secretWord, i);
         }
     }
     return secretWord;
 }
 
-// Inserts correctly guessed letter into the secretWord display
+// Inserts index of matched letter with correctly guessed letter into the secretWord display
 function reWriteOutput(userInput, secretWord, i) {
-    retval = secretWord.substr(0, i) + userInput + secretWord.substr(i+1, secretWord.length);
+    retval = secretWord.substr(0, i) + word2guess.charAt(i) + secretWord.substr(i+1, secretWord.length);
     return retval;
 }
 
