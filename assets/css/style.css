@@ -60,6 +60,7 @@ h3 {
 }
 
 #letters-guessed {
+    height: 32px;
     font-size: 1.876rem;
 }
 
