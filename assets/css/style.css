@@ -24,7 +24,7 @@ h3 {
 }
 
 .background {
-    background: url('../images/new-york-city.jpg') no-repeat center;
+    background: url('../images/philadelphia.jpg') no-repeat center;
     height: 100vh;
     position: fixed;
     right: 0;
@@ -51,8 +51,12 @@ h3 {
     outline: 8px solid #CFCFCF;
 }
 
-#message-output {
-    font-size: 1.75rem;
+.message {
+    height: 90px;
+}
+
+#message-output, #letters-guessed {
+    font-size: 1.25rem;
 }
 
 #secret-word {
@@ -60,7 +64,7 @@ h3 {
 }
 
 #letters-guessed {
-    font-size: 1.876rem;
+    height: 32px;
 }
 
 
@@ -68,5 +72,11 @@ h3 {
     h1 {
         font-size: 4em;
         letter-spacing: 1rem;
+    }
+    #message-output {
+        font-size: 1.75rem;
+    }
+    #letters-guessed {
+        font-size: 1.876rem;
     }
 }

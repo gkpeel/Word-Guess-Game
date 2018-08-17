@@ -1,5 +1,7 @@
 // ====== VARIABLES ====== //
-// List of the World's largest 300 cities
+// List of 300 of the World's most populated cities
+// (per - http://www.citymayors.com/statistics/largest-cities-population-125.html
+//        http://www.citymayors.com/statistics/largest-cities-population-250.html)
 var secretWords = [
     "Shanghai",
     "Beijing",
@@ -102,7 +104,7 @@ var secretWords = [
     "Guiyang",
     "Incheon",
     "Brasilia",
-    "Tshwane (Pretoria)",
+    "Tshwane",
     "Kanpur",
     "Salvador",
     "Buenos Aires",
@@ -169,7 +171,7 @@ var secretWords = [
     "Vienna",
     "Port Harcourt",
     "Luoyang",
-    "Aleppo(Halab)",
+    "Aleppo",
     "Hamburg",
     "Datong",
     "Tabriz",
@@ -303,16 +305,25 @@ var secretWords = [
     "Beirut",
 ];
 
+
+// Background Img file names
 var backgrounds = [
     "shanghai",
-    "new-york-city",
     "new-york-city-2",
     "paris",
     "london",
     "sao-paulo",
     "hong-kong",
     "moscow",
-    "los-angeles"
+    "los-angeles",
+    "ho-chi-minh",
+    "rio",
+    "hanoi",
+    "havana",
+    "philadelphia",
+    "seoul",
+    "delhi",
+    "barcelona",
 ]
 
 var wins = 0;
@@ -342,7 +353,8 @@ function reInit() {
     word2guess = random(secretWords);
     secretWord = guessDisplay(word2guess);
     gameOver = false;
-    background = '<img id="background" src="assets/images/'+random(backgrounds)+'.jpg" />';
+    messageOutput.innerHTML = "Press any key to get started!";
+    backgroundOutput.innerHTML = '<img id="background" src="assets/images/'+random(backgrounds)+'.jpg" />';
 }
 
 // Randomly select word from an array
@@ -411,39 +423,40 @@ function check(userInput, word2guess, guessedLetters, secretWord) {
     return secretWord
 }
 
+// Initialize Display
 winsOutput.innerHTML = wins;
 secretOutput.innerHTML = secretWord;
 movesOutput.innerHTML = moves2go;
 lettersOutput.innerHTML = guessedLetters;
 messageOutput.innerHTML = message;
 
+
+// Event Listener & game logic
 document.onkeyup = function(event) {
 
     userInput = event.key;
-    console.log(userInput.charCodeAt(0));
 
-    if (isValid(userInput) && secretWord !== word2guess && moves2go !== 0) {
+    if (secretWord !== word2guess && moves2go !== 0 && isValid(userInput)) {
         secretWord = check(userInput, word2guess, guessedLetters, secretWord);
     }
 
     if (secretWord === word2guess && gameWon === false) {
         wins++;
         gameOver = true;
-        messageOutput.innerHTML = "You won! The city was " + word2guess +".<br>Press ENTER to start a new game.";
+        messageOutput.innerHTML = "You won! Press ENTER to start a new game.";
     }
 
     if (moves2go === 0) {
-        wins = 0;
+        messageOutput.innerHTML = "You lost! Your score is " + wins + ". Press ENTER to start a new game.";
         gameOver = true;
+        wins = 0;
         secretWord = word2guess;
-        messageOutput.innerHTML = "You lost!<br>Press ENTER to start a new game.";
     }
 
     winsOutput.innerHTML = wins;
     secretOutput.innerHTML = secretWord;
     movesOutput.innerHTML = moves2go;
     lettersOutput.innerHTML = guessedLetters.join(", ");
-    backgroundOutput.innerHTML = background;
 
     // console.log(userInput);
     // console.log(secretWord);
@@ -457,57 +470,3 @@ document.onkeydown = function(event) {
         reInit();
     }
 }
-
-
-
-
-
-//dictionary - all the possible words to guess
-//secretWord - randomly selected from the dictionary
-
-//unknown 
-
-
-
-
-// function checkWord(userInput, word2guess) {
-//     // check if userInput not in lettersGuessed array
-//     if (!guessedLetters.include(userInput)) {
-//         // check if letter is in word2guess
-//         if (word2guess.include(userInput)) {
-//             // loop through word2guess
-//             for (var i=0; i<word2guess.length; i++) {
-//                 // if userInput === word2guess[i]
-//                 if (userInput === word2guess[i]) {
-//                     // secretWord[i] == userInput
-//                     secretWord[i] = userInput;
-//                 }
-//             }
-//         } else {
-//             // if userInput is not in word2guess decrement moves2go
-//             moves2go --;
-//         }
-//         // add userInput to lettersGuessed array
-//         guessedLetters.push(userInput);
-//     } 
-// }
-
-
-// var wordGuessGame = {
-//     dictionary: [
-//         "jambalaya", 
-//         "lasagna", 
-//         "cucumber", 
-//         "artichoke", 
-//         "pulled pork", 
-//         "osso bucco", 
-//         "ramen", 
-//         "pho dac biet"
-//     ], 
-//     word2guess: function() {
-//         this.dictionary[Math.floor(Math.random() * dictionary.length)]
-//     },
-//     initialDisplay: function(word2guess) {
-
-//     }
-// }
