@@ -316,6 +316,14 @@ var backgrounds = [
     "los-angeles"
 ]
 
+// Output variables
+var winsOutput = document.getElementById("wins").innerHTML;
+var secretOutput = document.getElementById("secret-word").innerHTML;
+var movesOutput = document.getElementById("turns-left").innerHTML;
+var lettersOutput = document.getElementById("letters-guessed").innerHTML;
+var messageOutput = document.getElementById("message-output").innerHTML;
+var backgroundOutput = document.getElementById("background").innerHTML;
+
 function random(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -345,6 +353,12 @@ var wordGuessGame = {
 
     init: function() {
         this.createDisplay();
+        winsOutput = this.wins;
+        secretOutput = this.secretWord;
+        movesOutput = this.moves2go;
+        lettersOutput = this.lettersOutput;
+        messageOutput = this.message;
+        backgroundOutput = this.background;
     },
 
     reInit: function() {
@@ -414,25 +428,10 @@ var wordGuessGame = {
     }
 }
 
-wordGuessGame.createDisplay();
+wordGuessGame.init();
 console.log(wordGuessGame.secretWord);
 
-var wordGuessGameDisplay = {
-    winsOutput: document.getElementById("wins").innerHTML = wordGuessGame.wins, 
-    secretOutput: document.getElementById("secret-word").innerHTML = wordGuessGame.secretWord,
-    movesOutput: document.getElementById("turns-left").innerHTML = wordGuessGame.moves2go,
-    lettersOutput: document.getElementById("letters-guessed").innerHTML = wordGuessGame.guessedLetters,
-    messageOutput: document.getElementById("message-output").innerHTML = wordGuessGame.message,
-    backgroundOutput: document.getElementById("background").innerHTML = wordGuessGame.background,
-    output: function() {
-        this.winsOutput = wordGuessGame.wins;
-        this.secretOutput = wordGuessGame.secretWord;
-        this.movesOutput = wordGuessGame.moves2go;
-        this.lettersOutput = wordGuessGame.guessedLetters;
-        this.messageOutput = wordGuessGame.message;
-        this.backgroundOutput = wordGuessGame.background;
-    }
-}
+
 
 // var wins = 0;
 // var guessedLetters = [];
@@ -538,13 +537,10 @@ var wordGuessGameDisplay = {
 // lettersOutput.innerHTML = guessedLetters;
 // messageOutput.innerHTML = message;
 
-wordGuessGameDisplay.output();
-
 document.onkeyup = function(event) {
-
+    wordGuessGame.init();
     wordGuessGame.userInput = event.key;
     wordGuessGame.check();
-    wordGuessGameDisplay.output();
     
 
 //     userInput = event.key;
